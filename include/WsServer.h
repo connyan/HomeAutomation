@@ -15,11 +15,12 @@ typedef websocketpp::server<websocketpp::config::asio> server;
 
 class WsServer {
  public:
-  explicit WsServer(ConnectionHandlerIF& connectionHandler, MessageHandlerIF& messageHandler_);
+  explicit WsServer(const int&, ConnectionHandlerIF&, MessageHandlerIF&);
 
   void run();
 
  private:
+  const int port_number_;
   server m_endpoint_;
   ConnectionHandlerIF& connectionHandler_;
   MessageHandlerIF& messageHandler_;
